@@ -26,25 +26,32 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         // Llama al método store en StudentService
-        return $this->studentService->store($request);
+        $student = new StudentModel();
+        $student = $this->studentService->store($request);
+        return \response()->json($student);
     }
 
     //      CRUD function   --  INDEX  (get all student)
     public function index(Request $request)
     {
-           return $this->studentService->index($request);
+            return \response()->json($this->studentService->index($request));
+//           return $this->studentService->index($request);
     }
 
     //      CRUD function   --  SHOW    (get a student by id)
     public function show($id)
     {
-        return $this->studentService->show($id);
+        return \response()->json($this->studentService->show($id));
+//        return $this->studentService->show($id);
     }
 
     //      CRUD function      --   update  (update student by $id)
     public function update(Request $request, $id)
     {
-        return $this->studentService->update($request, $id);
+       $student = new StudentModel();
+       $student = $this->studentService->update($request, $id);
+       return \response()->json($student);
+//        return $this->studentService->update($request, $id);
     }
 
     //      CRUD function       --  DELETE      (delete an student vy $id)
@@ -52,46 +59,5 @@ class StudentController extends Controller
     {
       return $this->studentService->destroy($id);
     }
-
-//
-//    //      CRUD function   --  INDEX  (get all student)
-//    public function index()
-//    {
-//        $student = StudentModel::all();
-//        return response()->json($student);
-//    }       //  --INDEX end--
-//
-//    //      CRUD function   --  STORE   (create a new student)
-//    public function store(Request $request)
-//    {
-//        $student = new StudentModel();
-//        $student->name = $request->input('name');
-//        $student->save();
-//        return response()->json($student);
-//    }      //  --STORE end--
-//
-//    //      CRUD function   --  SHOW    (get a student by id)
-//    public function show($id)
-//    {
-//        $student = StudentModel::find($id);
-//        return response()->json($student);
-//    }       //  --SHOW end--
-//
-//    //      CRUD function      --   update  (update student by $id)
-//    public function update(Request $request, $id)
-//    {
-//        $student = StudentModel::find($id);
-//        $student->name = $request->input('name');
-//        $student->save();
-//        return response()->json($student);
-//    }       //  --UPDATE end--
-//
-//    //      CRUD function       --  DELETE      (delete an student vy $id)
-//    public function destroy($id)
-//    {
-//        $student = StudentModel::find($id);
-//        $student->delete();
-//        return response()->json(['message' => 'Student deleted']);
-//    }       //  --DELETE end--
 
 }
