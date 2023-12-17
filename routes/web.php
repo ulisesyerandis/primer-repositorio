@@ -13,8 +13,14 @@
 |
 */
 
+//header("Access-Control-Allow-Origin:*");
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
+});
+
+Route::get('/', function () {
+    return view('welcome');
 });
 
         //          CRUD -> StudentTable

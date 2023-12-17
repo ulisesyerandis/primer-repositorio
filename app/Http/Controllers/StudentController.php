@@ -7,6 +7,7 @@ use App\Service\StudentService;
 //use Illuminate\Support\Facades\Request;
 use http\Env\Response;
 use Illuminate\Http\Request;
+use App\Http\Middleware\Cors;
 
 class StudentController extends Controller
 {
@@ -22,6 +23,7 @@ class StudentController extends Controller
        $this->studentService = $studentService;
 
     }
+
     //      CRUD function   --  STORE   (create a new student)
     public function store(Request $request)
     {
